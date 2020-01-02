@@ -24,7 +24,7 @@ public class UsuarioController {
 	    // @RequestParam means it is a parameter from the GET or POST request
 
 	    Usuario n = new Usuario();
-	    n.setNome(name);
+	    // n.setNome(name);
 	    n.setEmail(email);
 	    usuarioRepository.save(n);
 	    return "Saved";

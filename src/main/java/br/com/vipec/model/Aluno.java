@@ -1,7 +1,8 @@
 package br.com.vipec.model;
 
-public class Aluno {
-	
-	
+import javax.persistence.Entity;
+
+@Entity
+public class Aluno extends Pessoa{
 
 }
