@@ -13,28 +13,25 @@ import br.com.vipec.repository.UsuarioRepository;
 @RestController
 @RequestMapping(path = "/usuario")
 public class UsuarioController {
-	
+
 	@Autowired
 	private UsuarioRepository usuarioRepository;
-	
-	 @PostMapping// Map ONLY POST Requests
-	  public String addNewUser (@RequestParam String name
-	      , @RequestParam String email) {
-	    // @ResponseBody means the returned String is the response, not a view name
-	    // @RequestParam means it is a parameter from the GET or POST request
 
-	    Usuario n = new Usuario();
-	    // n.setNome(name);
-	    n.setEmail(email);
-	    usuarioRepository.save(n);
-	    return "Saved";
-	  }
+	@PostMapping
+	public String addNewUser(@RequestParam String login, @RequestParam String senha) {
+		// @RequestParam means it is a parameter from the GET or POST request
 
-	  @GetMapping
-	  public Iterable<Usuario> getAllUsers() {
-	    // This returns a JSON or XML with the users
-	    return usuarioRepository.findAll();
-	  }
-	
-	
+		Usuario n = new Usuario();
+		n.setLogin(login);
+		n.setSenha(senha);
+		usuarioRepository.save(n);
+		return "Saved";
+	}
+
+	@GetMapping
+	public Iterable<Usuario> getAllUsers() {
+		// This returns a JSON or XML with the users
+		return usuarioRepository.findAll();
+	}
+
 }
