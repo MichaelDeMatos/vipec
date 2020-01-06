@@ -21,16 +21,16 @@ public abstract class Pessoa {
     private Integer id;
     
     @Column( length = 100, nullable = false)
-    private String nome;
+    private String nomeCompleto;
 
-    @Column( length = 11, nullable = false, unique = true )
-    private String cpf;
+    // @Column( length = 11, nullable = false, unique = true )
+    // private String cpf;
 
     @Column( nullable = false )
     private String rg;
 
-    @Column( nullable = true )
-    private LocalDate dataDeNascimento;
+    // @Column( nullable = true )
+    // private LocalDate dataDeNascimento;
 
     // @Column( nullable = true )
     // private Endereco endereco;
@@ -47,21 +47,21 @@ public abstract class Pessoa {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeCompleto() {
+        return nomeCompleto;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeCompleto(String nome) {
+        this.nomeCompleto = nome;
     }
 
-    public String getCpf() {
-        return cpf;
-    }
+    // public String getCpf() {
+    //     return cpf;
+    // }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
+    // public void setCpf(String cpf) {
+    //     this.cpf = cpf;
+    // }
 
     public String getRg() {
         return rg;
@@ -71,13 +71,13 @@ public abstract class Pessoa {
         this.rg = rg;
     }
 
-    public LocalDate getDataDeNascimento() {
-        return dataDeNascimento;
-    }
+    // public LocalDate getDataDeNascimento() {
+    //     return dataDeNascimento;
+    // }
 
-    public void setDataDeNascimento(LocalDate dataDeNascimento) {
-        this.dataDeNascimento = dataDeNascimento;
-    }
+    // public void setDataDeNascimento(LocalDate dataDeNascimento) {
+    //     this.dataDeNascimento = dataDeNascimento;
+    // }
 
     @Override
     public int hashCode() {
