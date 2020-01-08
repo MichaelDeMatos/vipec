@@ -9,8 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 public class Responsavel {
 
@@ -40,7 +38,6 @@ public class Responsavel {
     private Endereco endereco;
 
     @Column( nullable = true )
-    @Temporal(TemporalType.DATE)
     private LocalDate dataDeNascimento;
 
     protected Responsavel() {

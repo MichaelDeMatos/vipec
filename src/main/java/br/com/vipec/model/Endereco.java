@@ -1,6 +1,7 @@
 package br.com.vipec.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -9,6 +10,7 @@ import javax.persistence.ManyToOne;
 /**
  * Endereco
  */
+ @Entity
 public class Endereco {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
