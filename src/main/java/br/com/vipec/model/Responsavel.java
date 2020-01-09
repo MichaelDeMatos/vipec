@@ -1,6 +1,7 @@
 package br.com.vipec.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -8,47 +9,48 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 public class Responsavel {
 
     @Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column( length = 100, nullable = false)
+    @Column(length = 100, nullable = false)
     private String nomeCompleto;
-    
-    @Column( length = 11, nullable = false, unique = true )
+
+    @Column(length = 11, nullable = false, unique = true)
     private String cpf;
 
-    @Column( nullable = false )
+    @Column(nullable = false)
     private String rg;
 
-    @OneToOne(optional = false)
-    @JoinColumn(columnDefinition="integer", name="aluno_id")
-    private Aluno aluno;
+    @OneToMany(mappedBy = "responsavel")
+    @JoinColumn(columnDefinition = "integer", name = "aluno_id")
+    private List<Aluno> alunos;
 
     @OneToOne(optional = false, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(columnDefinition="integer", name="contato_id")
+    @JoinColumn(columnDefinition = "integer", name = "contato_id")
     private Contato contato;
 
     @OneToOne(optional = false, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(columnDefinition="integer", name="endereco_id")
+    @JoinColumn(columnDefinition = "integer", name = "endereco_id")
     private Endereco endereco;
 
-    @Column( nullable = true )
+    @Column(nullable = true)
     private LocalDate dataDeNascimento;
 
     protected Responsavel() {
     }
 
-    public Responsavel(String nomeCompleto, String cpf, String rg, Aluno aluno, Contato contato, Endereco endereco,
+    public Responsavel(String nomeCompleto, String cpf, String rg, List<Aluno> aluno, Contato contato, Endereco endereco,
             LocalDate dataDeNascimento) {
         this.nomeCompleto = nomeCompleto;
         this.cpf = cpf;
         this.rg = rg;
-        this.aluno = aluno;
+        this.alunos = aluno;
         this.contato = contato;
         this.endereco = endereco;
         this.dataDeNascimento = dataDeNascimento;
@@ -86,12 +88,12 @@ public class Responsavel {
         this.rg = rg;
     }
 
-    public Aluno getAluno() {
-        return aluno;
+    public List<Aluno> getAlunos() {
+        return alunos;
     }
 
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
+    public void setAlunos(List<Aluno> alunos) {
+        this.alunos = alunos;
     }
 
     public Contato getContato() {
@@ -142,7 +144,4 @@ public class Responsavel {
             return false;
         return true;
     }
-
-    
-
 }

@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -27,9 +28,9 @@ public class Aluno {
     @Column( nullable = false )
     private String rg;
 
-    // @OneToOne(optional = true)
-    // @JoinColumn(columnDefinition="integer", name="responsavel_id")
-    // private Responsavel responsavel;
+    @ManyToOne(optional = true)
+    @JoinColumn(columnDefinition="integer", name="responsavel_id")
+    private Responsavel responsavel;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(columnDefinition="integer", name="contato_id")
@@ -52,7 +53,7 @@ public class Aluno {
         this.nomeCompleto = nomeCompleto;
         this.cpf = cpf;
         this.rg = rg;
-        // this.responsavel = responsavel;
+        this.responsavel = responsavel;
         this.contato = contato;
         this.endereco = endereco;
         this.dataDeNascimento = dataDeNascimento;
@@ -91,13 +92,13 @@ public class Aluno {
         this.rg = rg;
     }
 
-    // public Responsavel getResponsavel() {
-    //     return responsavel;
-    // }
+    public Responsavel getResponsavel() {
+        return responsavel;
+    }
 
-    // public void setResponsavel(Responsavel responsavel) {
-    //     this.responsavel = responsavel;
-    // }
+    public void setResponsavel(Responsavel responsavel) {
+        this.responsavel = responsavel;
+    }
 
     public Contato getContato() {
         return contato;
