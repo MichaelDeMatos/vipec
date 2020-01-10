@@ -47,7 +47,6 @@ public class Aluno {
     protected Aluno() {
     }
 
-    
     public Aluno(String nomeCompleto, String cpf, String rg, Responsavel responsavel, Contato contato,
             Endereco endereco, LocalDate dataDeNascimento) {
         this.nomeCompleto = nomeCompleto;

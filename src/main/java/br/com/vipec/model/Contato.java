@@ -10,7 +10,7 @@ import javax.persistence.Id;
 @Entity
 public class Contato {
 
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
 	private Integer id;
 	
@@ -22,13 +22,24 @@ public class Contato {
 
 	@Column(length = 2, nullable = true)
 	private String dddCelular;
-
+	
 	@Column(length = 9, nullable = true)
 	private String numeroCelular;
 	
 	@Column(length = 100, nullable = true)
 	private String email;
 
+	public Contato() {
+	}
+	
+	public Contato(String dddFixo, String numeroFixo, String dddCelular, String numeroCelular, String email) {
+		this.dddFixo = dddFixo;
+		this.numeroFixo = numeroFixo;
+		this.dddCelular = dddCelular;
+		this.numeroCelular = numeroCelular;
+		this.email = email;
+	}
+	
 	public Integer getId() {
 		return id;
 	}
@@ -56,7 +67,7 @@ public class Contato {
 	public String getDddCelular() {
 		return dddCelular;
 	}
-
+	
 	public void setDddCelular(String dddCelular) {
 		this.dddCelular = dddCelular;
 	}

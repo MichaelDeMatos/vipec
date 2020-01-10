@@ -1,7 +1,8 @@
 package br.com.vipec.model;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -29,7 +30,7 @@ public class Responsavel {
 
     @OneToMany(mappedBy = "responsavel")
     @JoinColumn(columnDefinition = "integer", name = "aluno_id")
-    private List<Aluno> alunos;
+    private Set<Aluno> alunos = new HashSet<>();
 
     @OneToOne(optional = false, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(columnDefinition = "integer", name = "contato_id")
@@ -45,12 +46,12 @@ public class Responsavel {
     protected Responsavel() {
     }
 
-    public Responsavel(String nomeCompleto, String cpf, String rg, List<Aluno> aluno, Contato contato, Endereco endereco,
+    public Responsavel(String nomeCompleto, String cpf, String rg, Set<Aluno> alunos, Contato contato, Endereco endereco,
             LocalDate dataDeNascimento) {
         this.nomeCompleto = nomeCompleto;
         this.cpf = cpf;
         this.rg = rg;
-        this.alunos = aluno;
+        this.alunos = alunos;
         this.contato = contato;
         this.endereco = endereco;
         this.dataDeNascimento = dataDeNascimento;
@@ -88,11 +89,11 @@ public class Responsavel {
         this.rg = rg;
     }
 
-    public List<Aluno> getAlunos() {
+    public Set<Aluno> getAlunos() {
         return alunos;
     }
 
-    public void setAlunos(List<Aluno> alunos) {
+    public void setAlunos(Set<Aluno> alunos) {
         this.alunos = alunos;
     }
 
