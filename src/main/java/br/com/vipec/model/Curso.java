@@ -1,29 +1,42 @@
 package br.com.vipec.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 /**
- * Uf
+ * Curso
  */
 @Entity
-public class Uf {
+public class Curso {
 
     @Id
-	@Column(length = 2, nullable = false)
-	private String codigo;
+    @Column(length = 3, nullable = false)
+    private String codigo;
 
-	@Column(length = 20, nullable = false)
-	private String descricao;
+    @Column(nullable = false)
+    private String descricao;
 
-    
-    public Uf() {
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private TipoCurso tipoCurso;
+
+    @ManyToMany
+    private Set<Professor> professores = new HashSet<>();
+
+    public Curso() {
     }
 
-    public Uf(String codigo, String descricao) {
+    public Curso(String codigo, String descricao, TipoCurso tipoCurso) {
         this.codigo = codigo;
         this.descricao = descricao;
+        this.tipoCurso = tipoCurso;
     }
 
     public String getCodigo() {
@@ -42,6 +55,14 @@ public class Uf {
         this.descricao = descricao;
     }
 
+    public TipoCurso getTipoCurso() {
+        return tipoCurso;
+    }
+
+    public void setTipoCurso(TipoCurso tipoCurso) {
+        this.tipoCurso = tipoCurso;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -58,7 +79,7 @@ public class Uf {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Uf other = (Uf) obj;
+        Curso other = (Curso) obj;
         if (codigo == null) {
             if (other.codigo != null)
                 return false;
@@ -67,7 +88,4 @@ public class Uf {
         return true;
     }
 
-    
-
-    
 }

@@ -9,6 +9,6 @@ import br.com.vipec.model.Curso;
 /**
  * CursoRepository
  */
-public class CursoRepository extends CrudRepository<Curso, String> {
+public interface CursoRepository extends CrudRepository<Curso, String> {
 
 }

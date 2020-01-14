@@ -16,34 +16,33 @@ import javax.persistence.OneToOne;
 public class Aluno {
 
     @Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column( length = 100, nullable = false)
+    @Column(length = 100, nullable = false)
     private String nomeCompleto;
-    
-    @Column( length = 11, nullable = true, unique = true )
+
+    @Column(length = 11, nullable = true, unique = true)
     private String cpf;
 
-    @Column( nullable = false )
+    @Column(nullable = false)
     private String rg;
 
     @ManyToOne(optional = true)
-    @JoinColumn(columnDefinition="integer", name="responsavel_id")
+    @JoinColumn(columnDefinition = "integer", name = "responsavel_id")
     private Responsavel responsavel;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(columnDefinition="integer", name="contato_id")
+    @JoinColumn(columnDefinition = "integer", name = "contato_id")
     private Contato contato;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(columnDefinition="integer", name="endereco_id")
+    @JoinColumn(columnDefinition = "integer", name = "endereco_id")
     private Endereco endereco;
 
-    @Column( nullable = false )
+    @Column(nullable = false)
     private LocalDate dataDeNascimento;
 
-    
     protected Aluno() {
     }
 
@@ -57,7 +56,6 @@ public class Aluno {
         this.endereco = endereco;
         this.dataDeNascimento = dataDeNascimento;
     }
-
 
     public Integer getId() {
         return id;

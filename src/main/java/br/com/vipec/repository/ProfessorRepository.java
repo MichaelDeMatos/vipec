@@ -9,7 +9,7 @@ import br.com.vipec.model.Professor;
 /**
  * ProfessorRepository
  */
-public class ProfessorRepository extends CrudRepository<Professor, String> {
+public interface ProfessorRepository extends CrudRepository<Professor, String> {
 
     
 }

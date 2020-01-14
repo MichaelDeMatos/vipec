@@ -9,7 +9,7 @@ import br.com.vipec.model.Turma;
 /**
  * TurmaRepository
  */
-public class TurmaRepository extends CrudRepository<Turma, Integer> {
+public interface TurmaRepository extends CrudRepository<Turma, Integer> {
 
     
 }

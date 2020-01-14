@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 /**
  * Contratante
  */
-@Entity
+
 public class Contratante extends Pessoa {
 
     

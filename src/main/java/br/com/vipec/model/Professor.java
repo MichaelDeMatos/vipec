@@ -11,11 +11,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+/**
+ * Professor
+ */
 @Entity
-public class Responsavel {
+public class Professor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,9 +34,6 @@ public class Responsavel {
     @Column(nullable = false)
     private String rg;
 
-    @OneToMany(mappedBy = "responsavel")
-    private Set<Aluno> alunos = new HashSet<>();
-
     @OneToOne(optional = false, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(columnDefinition = "integer", name = "contato_id")
     private Contato contato;
@@ -41,21 +42,30 @@ public class Responsavel {
     @JoinColumn(columnDefinition = "integer", name = "endereco_id")
     private Endereco endereco;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private LocalDate dataDeNascimento;
 
-    protected Responsavel() {
+
+    private String grauDeInstrucao;
+
+    private String experiencia;
+
+    private String nivelDeHabilidade;
+
+    public Professor() {
     }
 
-    public Responsavel(String nomeCompleto, String cpf, String rg, Set<Aluno> alunos, Contato contato,
-            Endereco endereco, LocalDate dataDeNascimento) {
+    public Professor(String nomeCompleto, String cpf, String rg, Contato contato, Endereco endereco,
+            LocalDate dataDeNascimento, String grauDeInstrucao, String experiencia, String nivelDeHabilidade) {
         this.nomeCompleto = nomeCompleto;
         this.cpf = cpf;
         this.rg = rg;
-        this.alunos = alunos;
         this.contato = contato;
         this.endereco = endereco;
         this.dataDeNascimento = dataDeNascimento;
+        this.grauDeInstrucao = grauDeInstrucao;
+        this.experiencia = experiencia;
+        this.nivelDeHabilidade = nivelDeHabilidade;
     }
 
     public Integer getId() {
@@ -90,14 +100,6 @@ public class Responsavel {
         this.rg = rg;
     }
 
-    public Set<Aluno> getAlunos() {
-        return alunos;
-    }
-
-    public void setAlunos(Set<Aluno> alunos) {
-        this.alunos = alunos;
-    }
-
     public Contato getContato() {
         return contato;
     }
@@ -122,6 +124,30 @@ public class Responsavel {
         this.dataDeNascimento = dataDeNascimento;
     }
 
+    public String getGrauDeInstrucao() {
+        return grauDeInstrucao;
+    }
+
+    public void setGrauDeInstrucao(String grauDeInstrucao) {
+        this.grauDeInstrucao = grauDeInstrucao;
+    }
+
+    public String getExperiencia() {
+        return experiencia;
+    }
+
+    public void setExperiencia(String experiencia) {
+        this.experiencia = experiencia;
+    }
+
+    public String getNivelDeHabilidade() {
+        return nivelDeHabilidade;
+    }
+
+    public void setNivelDeHabilidade(String nivelDeHabilidade) {
+        this.nivelDeHabilidade = nivelDeHabilidade;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -138,7 +164,7 @@ public class Responsavel {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Responsavel other = (Responsavel) obj;
+        Professor other = (Professor) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
@@ -146,4 +172,9 @@ public class Responsavel {
             return false;
         return true;
     }
+
+    
+
+    
+
 }
