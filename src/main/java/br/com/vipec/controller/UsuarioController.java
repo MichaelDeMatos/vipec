@@ -1,6 +1,11 @@
 package br.com.vipec.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.vipec.model.Usuario;
 import br.com.vipec.repository.UsuarioRepository;
 
-@RestController
+@Controller
 @RequestMapping(path = "/usuario")
 public class UsuarioController {
 
@@ -18,14 +23,15 @@ public class UsuarioController {
 	private UsuarioRepository usuarioRepository;
 
 	@PostMapping
-	public String addNewUser(@RequestParam String login, @RequestParam String senha) {
-		// @RequestParam means it is a parameter from the GET or POST request
+	public String addNewUser(@Valid Usuario user, BindingResult result, Model model) {
+		
+		if (result.hasErrors()) {
+            return "add-user";
+        }
 
-		Usuario n = new Usuario();
-		n.setLogin(login);
-		n.setSenha(senha);
-		usuarioRepository.save(n);
-		return "Saved";
+		model.addAttribute("users", usuarioRepository.findAll());
+		usuarioRepository.save(user);
+		return "index";
 	}
 
 	@GetMapping

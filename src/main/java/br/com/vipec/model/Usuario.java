@@ -1,21 +1,28 @@
 package br.com.vipec.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
-@Table( name = "usuario" )
+@Table(name = "usuario")
 public class Usuario {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	
+
+	@Column(nullable = false)
+	@NotBlank(message = "Login é obrigatório!")
 	private String login;
 
+	@Column(nullable = false)
+	@NotNull(message = "Senha é obrigatória!")
 	private String senha;
 
 	public Integer getId() {
@@ -49,7 +56,7 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -74,6 +81,5 @@ public class Usuario {
 			return false;
 		return true;
 	}
-	
-	
+
 }
