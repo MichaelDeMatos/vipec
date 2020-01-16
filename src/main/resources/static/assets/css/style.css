@@ -10238,12 +10238,14 @@ table.footable-paging-center > tfoot > tr.footable-paging > td {
       Authentication-page css start
  ========================================= */
 .common-img-bg {
-  background-size: cover;
-  background: url(../images/bg.jpg) no-repeat center center fixed;
-  height: 100%; }
-  @media only screen and (max-width: 992px) {
+  /* background-size: cover;
+  background: url(../images/vipec/vipec.jpeg) no-repeat center center fixed;
+  height: 100%;  */
+  background: #34c6f3 !important;
+}
+  /* @media only screen and (max-width: 992px) {
     .common-img-bg {
-      background: #f3f3f3 !important; } }
+      background: #f3f3f3 !important; } } */
 
 .login-card {
   border-radius: 30px;
@@ -10456,7 +10458,7 @@ table.footable-paging-center > tfoot > tr.footable-paging > td {
   .auth-body .text-center img {
     display: none; }
 
-  .error-500, .error-503, .error-404, .error-400, .error-403, .login {
+  .error-500, .error-503, .error-404, .error-400, .error-403 {
     display: block !important;
     position: relative !important; }
 
