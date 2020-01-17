@@ -28,7 +28,9 @@ public class UsuarioController {
 
 	
 	@GetMapping("/mostraFormUsuario")
-    public String mostraFormUsuario(Model model) {
+    public String mostraFormUsuario(Usuario usuario) {
+		// Usuario usuario = new Usuario();
+		// model.addAttribute("usuario", usuario);
 
         return "usuarioForm";
     }
@@ -37,12 +39,12 @@ public class UsuarioController {
 	public String salvaNovoUsuario(@Valid Usuario usuario, BindingResult result, Model model) {
 
 		if (result.hasErrors()) {
-			return "add-user";
+			return "usuarioForm";
 		}
 
 		usuarioRepository.save(usuario);
 		model.addAttribute("usuarios", usuarioRepository.findAll());
-		return "index";
+		return "usuarioForm";
 	}
 
 	@GetMapping("/{id}")
