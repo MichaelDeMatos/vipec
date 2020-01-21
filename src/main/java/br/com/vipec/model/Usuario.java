@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "usuario")
@@ -22,7 +21,7 @@ public class Usuario {
 	private String login;
 
 	@Column(nullable = false)
-	@NotNull(message = "Senha é obrigatória!")
+	@NotBlank(message = "Senha é obrigatória!")
 	private String senha;
 
 	public Integer getId() {

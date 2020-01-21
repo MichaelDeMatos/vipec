@@ -111,7 +111,7 @@
           action="#"
           th:action="@{/usuario}"
           th:object="${usuario}"
-          method="post"
+          th:method="post"
           id="main"
           novalidate
         >
@@ -124,11 +124,12 @@
                 <input
                   type="text"
                   class="form-control"
-                  name="name"
-                  id="name"
+                  name="login"
+                  id="login"
                   placeholder="Login"
                   th:field="*{login}"
                 />
+                <!-- <span class="text-danger error" th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></span> -->
                 <span class="messages"></span>
               </div>
             </div>
@@ -136,18 +137,19 @@
 
           <div class="form-group">
             <div class="row">
-              <label class="col-sm-2 col-form-label">Password</label>
+              <label class="col-sm-2 col-form-label">Senha</label>
             </div>
             <div class="row">
               <div class="col-sm-10">
                 <input
                   type="password"
                   class="form-control"
-                  id="password"
-                  name="password"
-                  placeholder="Password"
+                  id="senha"
+                  name="senha"
+                  placeholder="Senha"
                   th:field="*{senha}"
                 />
+                <!-- <span class="text-danger error" th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}"></span> -->
                 <span class="messages"></span>
               </div>
             </div>
@@ -207,10 +209,6 @@
     <script
       th:src="@{https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js}"
     ></script>
-    <script
-      type="text/javascript"
-      th:src="@{/assets/pages/form-validation/validate.js}"
-    ></script>
     <!-- i18next.min.js -->
     <script
       type="text/javascript"
@@ -229,12 +227,16 @@
       th:src="@{/bower_components/jquery-i18next/js/jquery-i18next.min.js}"
     ></script>
     <!-- Custom js -->
-    <!-- <script
+    <script
       type="text/javascript"
-      th:src="@{/assets/pages/form-validation/form-validation.js}"
-    ></script> -->
+      th:src="@{/custom/js/form-validation/form-validation.js}"
+    ></script>
+    <script
+    type="text/javascript"
+    th:src="@{/custom/js/form-validation/validate.js}"
+  ></script>
     <!-- <script type="text/javascript" th:src="@{/assets/js/script.js}"></script> -->
-    <script type="text/javascript" th:src="@{/custom/js/card.js}"></script>
+    <script type="text/javascript" th:src="@{/custom/js/card/card.js}"></script>
     <script th:src="@{/assets/js/pcoded.min.js}"></script>
     <script th:src="@{/assets/js/demo-12.js}"></script>
     <script

@@ -50,9 +50,9 @@ public class UsuarioController {
 	@GetMapping("/{id}")
 	public String mostraFormAtualizar(@PathVariable("id") int id, Model model) {
 		Usuario user = usuarioRepository.findById(id)
-				.orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+				.orElseThrow(() -> new IllegalArgumentException("Id de usuário inválido:" + id));
 
-		model.addAttribute("user", user);
+		model.addAttribute("usuario", user);
 		return "update-user";
 	}
 
@@ -85,9 +85,9 @@ public class UsuarioController {
 	@DeleteMapping("/{id}")
 	public String deletaUsuario(@PathVariable("id") int id, Model model) {
 		Usuario user = usuarioRepository.findById(id)
-				.orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+				.orElseThrow(() -> new IllegalArgumentException("Id de usuário inválido:" + id));
 		usuarioRepository.delete(user);
-		model.addAttribute("users", usuarioRepository.findAll());
+		model.addAttribute("usuarios", usuarioRepository.findAll());
 		return "index";
 	}
 
