@@ -147,25 +147,26 @@
       // Shows the errors for a specific input
       function showErrorsForInput(input, errors) {
           // This is the root of the input
-
-          var formGroup = closestParent(input.parentNode, "form-group")
-              // Find where the error messages will be insert into
-              ,
-              messages = formGroup.querySelector(".messages");
-          // First we remove any old messages and resets the classes
-          resetFormGroup(formGroup);
-          // If we have errors
-          if (errors) {
-              // we first mark the group has having errors
-              formGroup.classList.add("has-error");
-              // then we append all the errors
-              _.each(errors, function(error) {
-
-                  addError(messages, error, input);
-              });
-          } else {
-              // otherwise we simply mark it as success
-              formGroup.classList.add("has-success");
+          if (input.type !== "hidden"){
+              var formGroup = closestParent(input.parentNode, "form-group")
+                  // Find where the error messages will be insert into
+                  ,
+                  messages = formGroup.querySelector(".messages");
+              // First we remove any old messages and resets the classes
+              resetFormGroup(formGroup);
+              // If we have errors
+              if (errors) {
+                  // we first mark the group has having errors
+                  formGroup.classList.add("has-error");
+                  // then we append all the errors
+                  _.each(errors, function(error) {
+    
+                      addError(messages, error, input);
+                  });
+              } else {
+                  // otherwise we simply mark it as success
+                  formGroup.classList.add("has-success");
+              }
           }
       }
 

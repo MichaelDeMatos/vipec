@@ -109,14 +109,15 @@
       <div class="card-block">
         <form
           action="#"
-          th:action="${usuario.id == null} ? @{/usuario} : @{/usuario/${usuario.id}}"
+          th:action="${usuario.id == null} ? @{/usuario/salvar} : @{/usuario/atualizar}"
           th:object="${usuario}"
-          th:method="${usuario.id == null} ? post : put"
+          method="post"
           id="main_form"
           novalidate
         >
           <!-- onsubmit="return handleFormSubmit(form, constraints);" -->
-          <input type="hidden" th:field="*{id}" />
+          <input type="hidden" name="id" id="id" th:field="*{id}" />
+          
           <div class="form-group">
             <div class="row">
               <label class="col-sm-2 col-form-label">Login</label>
