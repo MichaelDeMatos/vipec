@@ -16,6 +16,6 @@ public class LoginController {
     @GetMapping
     public String showLoginForm(Model model) {
 
-        return "login";
+        return "views/login";
     }
 }

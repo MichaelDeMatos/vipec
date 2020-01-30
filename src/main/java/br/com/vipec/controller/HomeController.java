@@ -14,13 +14,13 @@ public class HomeController {
     @GetMapping
     public String home() {
 
-        return "redirect:/usuario/cadastrar";
+        return "redirect:/login";
     }
 
-    @GetMapping("dashboard")
+    @GetMapping("home")
     public String showLoginForm(Model model) {
 
-        return "dashboard";
+        return "layout/layout";
     }
 
 

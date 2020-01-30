@@ -11,10 +11,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfiguration {
 
-    @Bean
-	public WebServerFactoryCustomizer<ConfigurableServletWebServerFactory> webServerFactoryCustomizer() {
-		return factory -> factory.setContextPath("/vipec");
-	}
+    // @Bean
+	// public WebServerFactoryCustomizer<ConfigurableServletWebServerFactory> webServerFactoryCustomizer() {
+	// 	return factory -> factory.setContextPath("/vipec");
+	// }
 
     
 }
