@@ -27,11 +27,15 @@ public class UsuarioController {
 
 	
 	@GetMapping("/cadastrar")
-    public ModelAndView formCadastrar(Usuario usuario) {
+    public ModelAndView formCadastrar(Usuario usuario, ModelMap model) {
 		// Usuario usuario = new Usuario();
 		// model.addAttribute("usuario", usuario);
+		model.addAttribute("template", "/views/usuario/form");
+		model.addAttribute("formulario", "usuario-form");
+		model.addAttribute("title", "title");
 
-        return new ModelAndView("/views/usuario/form");
+
+        return new ModelAndView("/layout/layout", model);
 	}
 	
 	

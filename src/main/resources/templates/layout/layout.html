@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
   <head>
-    <title>Vipec - Home</title>
+    <title th:replace="${template} ? ~{ ${template} :: ${title} } : ~{}">Vipec - Home</title>
     <!-- HTML5 Shim and Respond.js IE9 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -684,9 +684,9 @@
                       <div class="row">
                         <div class="col-lg-12">
                           <!-- Default card start -->
-                          <div class="card">
+                          <div th:replace="${template} ? ~{ ${template} :: ${formulario} } : ~{}" class="card">
                             <div class="card-header">
-                              <h5>Dashboard</h5>
+                              <h5>Home</h5>
                             </div>
                             <div class="card-block">
                               <span>Tela inicial do sistema!</span>
