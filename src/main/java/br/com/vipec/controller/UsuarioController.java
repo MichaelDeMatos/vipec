@@ -31,7 +31,7 @@ public class UsuarioController {
 		// Usuario usuario = new Usuario();
 		// model.addAttribute("usuario", usuario);
 		model.addAttribute("template", "/views/usuario/form");
-		model.addAttribute("formulario", "usuario-form");
+		model.addAttribute("fragment", "usuario-form");
 		model.addAttribute("title", "title");
 
 
@@ -70,8 +70,11 @@ public class UsuarioController {
 		listaUsuarios = usuarioRepository.findAll();
 		model.addAttribute("usuarios", listaUsuarios);
 		System.out.println(listaUsuarios);
+		model.addAttribute("template", "/views/usuario/list");
+		model.addAttribute("fragment", "corpo");
+		model.addAttribute("title", "title");
 
-		return new ModelAndView("/views/usuario/list");
+		return new ModelAndView("/layout/layout", model);
 
 	}
 

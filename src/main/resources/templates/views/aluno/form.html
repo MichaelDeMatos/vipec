@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title th:frangment="title">Vipec - Aluno</title>
+    <!-- <link
+      rel="stylesheet"
+      type="text/css"
+      th:href="@{/bower_components/bootstrap/css/bootstrap.min.css}"
+    /> -->
+  </head>
+
+  <body>
+    <div th:fragment="aluno-form" class="card">
+      <div class="card-header">
+        <h5>Novo aluno</h5>
+        <div class="card-header-right">
+          <i class="icofont icofont-rounded-down"></i>
+          <i class="icofont icofont-refresh"></i>
+          <i class="icofont icofont-close-circled"></i>
+        </div>
+      </div>
+      <div class="card-block">
+         <form
+          action="#"
+          th:action="${aluno.id == null} ? @{/aluno/salvar} : @{/aluno/atualizar}"
+          th:object="${aluno}"
+          method="post"
+          id="main_form"
+          novalidate
+        >
+        
+        <input type="hidden" name="id" id="id" th:field="*{id}" />
+        
+        <div class="form-group">
+          <div class="row">
+            <label class="col-sm-2 col-form-label">Nome Completo</label>
+          </div>
+          <div class="row">
+            <div class="col-sm-10">
+              <input
+              type="text"
+              class="form-control"
+              name="nomeCompleto"
+              id="nomeCompleto"
+              placeholder="Nome Completo"
+              th:field="*{nomeCompleto}"
+              />
+              
+              <span
+              class="text-danger error"
+              th:if="${#fields.hasErrors('nomeCompleto')}"
+              th:errors="*{nomeCompleto}"
+              ></span>
+              <span class="messages"></span>
+            </div>
+          </div>
+        </div>
+        
+        <!--
+          <div class="form-group">
+            <div class="row">
+              <label class="col-sm-2 col-form-label">Senha</label>
+            </div>
+            <div class="row">
+              <div class="col-sm-10">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="senha"
+                  name="senha"
+                  placeholder="Senha"
+                  th:field="*{senha}"
+                />
+                <span
+                  class="text-danger error"
+                  th:if="${#fields.hasErrors('senha')}"
+                  th:errors="*{senha}"
+                ></span>
+                <span class="messages"></span>
+              </div>
+            </div>
+          </div>
+-->
+          <div class="form-group row">
+            <div class="col-sm-10">
+              <button type="submit" class="btn btn-primary m-b-0">
+                Submit
+              </button>
+            </div>
+          </div> 
+        </form> 
+      </div>
+    </div>
+
+    <div th:fragment="script-imports" th:remove="tag">
+    <script type="text/javascript">
+      var form = document.getElementById("main_form");
+      var constraints = {
+        nomeCompleto: {
+          // Password is also required
+          presence: true,
+          // And must be at least 5 characters long
+          length: {
+            minimum: 5
+          }
+        },
+        login: {
+          // Password is also required
+          presence: true,
+          // And must be at least 5 characters long
+          length: {
+            minimum: 5
+          }
+        }
+      };
+    </script>
+
+    <!-- Validation js -->
+    <script
+      th:src="@{https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js}"
+    ></script>
+    <script
+      th:src="@{https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js}"
+    ></script>
+
+    <!-- Custom js -->
+    <script
+      type="text/javascript"
+      th:src="@{/custom/js/form-validation/form-validation.js}"
+    ></script>
+    <script
+      type="text/javascript"
+      th:src="@{/custom/js/form-validation/validate.js}"
+    ></script>
+    <!-- <script type="text/javascript" th:src="@{/assets/js/script.js}"></script> -->
+    <script type="text/javascript" th:src="@{/custom/js/card/card.js}"></script>
+    <!-- <script th:src="@{/assets/js/demo-12.js}"></script> -->
+    </div>
+  </body>
+</html>

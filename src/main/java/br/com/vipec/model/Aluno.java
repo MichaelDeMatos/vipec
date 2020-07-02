@@ -43,7 +43,7 @@ public class Aluno {
     @Column(nullable = false)
     private LocalDate dataDeNascimento;
 
-    protected Aluno() {
+    public Aluno() {
     }
 
     public Aluno(String nomeCompleto, String cpf, String rg, Responsavel responsavel, Contato contato,
